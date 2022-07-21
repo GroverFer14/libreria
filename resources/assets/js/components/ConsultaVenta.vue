@@ -283,7 +283,7 @@ export default {
         });
     },
     pdfVenta(id) {
-      window.open("http://127.0.0.1:8000/venta/pdf/" + id + "," + "_blank");
+      window.open("http://44.206.225.159/venta/pdf/" + id + "," + "_blank");
     },
     cambiarPagina(page, buscar, criterio) {
       let me = this;

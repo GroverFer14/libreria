@@ -258,7 +258,7 @@ export default {
         });
     },
     cargarPdf() {
-      window.open("http://127.0.0.1:8000/articulo/listarPdf", "_blank");
+      window.open("http://44.206.225.159/articulo/listarPdf", "_blank");
     },
     selectCategoria() {
       let me = this;
