@@ -30,12 +30,10 @@
               <thead>
                 <tr>
                   <th>Opciones</th>
-                  <th>Nombre Cliente</th>
-                  <th>Telefono</th>
-                  <th>Ubicacion</th>
+                  <th>Tipo Comprobante</th>
+                  <th>Serie</th>
+                  <th>Numero</th>
                   <th>Total</th>
-                  <th>Delivery</th>
-                  <th>Estado</th>
                 </tr>
               </thead>
               <tbody>
@@ -44,7 +42,7 @@
                     <button type="button" @click="verVenta(pedido.ventasId)" class="btn btn-success btn-sm">
                       <i class="icon-eye"></i>
                     </button> &nbsp;
-                    <template v-if="pedido.estado == 'Pendiente'">
+                    <!-- <template v-if="pedido.estado == 'Pendiente'">
                       <button type="button" class="btn btn-success btn-sm" @click="entregarPedido(pedido.id)">
                         <i class="icon-check"></i>
                       </button>
@@ -53,14 +51,12 @@
                       <button type="button" class="btn btn-warning btn-sm" @click="pendientePedido(pedido.id)">
                         <i class="icon-check"></i>
                       </button>
-                    </template>
+                    </template> -->
                   </td>
-                  <td v-text="pedido.nombreCliente"></td>
-                  <td v-text="pedido.telefono"></td>
-                  <td v-text="pedido.ubicacion"></td>
+                  <td v-text="pedido.tipo_comprobante"></td>
+                  <td v-text="pedido.serie_comprobante"></td>
+                  <td v-text="pedido.num_comprobante"></td>
                   <td v-text="pedido.total"></td>
-                  <td v-text="pedido.usuario"></td>
-                  <td v-text="pedido.estado"></td>
                 </tr>
               </tbody>
             </table>
@@ -341,7 +337,12 @@ export default {
     listarPedido(page, buscar, criterio) {
       let me = this;
       var url =
-        "/pedido?page=" + page + "&buscar=" + buscar + "&criterio=" + criterio;
+        "/clienteventa?page=" +
+        page +
+        "&buscar=" +
+        buscar +
+        "&criterio=" +
+        criterio;
       axios
         .get(url)
         .then(function (response) {

@@ -28,6 +28,8 @@ Vue.component('consultaingreso', require('./components/ConsultaIngreso.vue'));
 Vue.component('consultaventa', require('./components/ConsultaVenta.vue'));
 Vue.component('notification', require('./components/Notification.vue'));
 Vue.component('pedido', require('./components/Pedido.vue'));
+Vue.component('clienteventa', require('./components/Clienteventa.vue'));
+
 
 const app = new Vue({
     el: '#app',

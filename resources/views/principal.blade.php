@@ -70,6 +70,8 @@
             @include('plantilla.sidebaralmacenero')
             @elseif (Auth::user()->idrol == 4)
             @include('plantilla.sidebardelivery')
+            @elseif (Auth::user()->idrol == 5)
+            @include('plantilla.sidebarcliente')
             @else
 
             @endif

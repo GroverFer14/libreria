@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Persona;
+use App\User;
+use App\Venta;
 
 class ClienteController extends Controller
 {
@@ -31,6 +33,42 @@ class ClienteController extends Controller
                 'to'           => $personas->lastItem(),
             ],
             'personas' => $personas
+        ];
+    }
+
+
+    public function index2(Request $request)
+    {
+        // if (!$request->ajax()) return redirect('/');
+
+        $buscar = $request->buscar;
+        $criterio = $request->criterio;
+        $idUsuario = \Auth::user()->id;
+
+        if ($buscar == '') {
+            $pedidos = Venta::join('personas', 'ventas.idcliente', '=', 'personas.id')
+                ->join('users', 'ventas.idusuario', '=', 'users.id')
+                ->select(
+                    'ventas.id as ventasId',
+                    'ventas.tipo_comprobante',
+                    'ventas.serie_comprobante',
+                    'ventas.num_comprobante',
+                    'ventas.total',
+                )
+                ->where('ventas.idcliente', '=', $idUsuario)
+                ->orderBy('ventas.id', 'desc')->paginate(3);
+        }
+
+        return [
+            'pagination' => [
+                'total'        => $pedidos->total(),
+                'current_page' => $pedidos->currentPage(),
+                'per_page'     => $pedidos->perPage(),
+                'last_page'    => $pedidos->lastPage(),
+                'from'         => $pedidos->firstItem(),
+                'to'           => $pedidos->lastItem(),
+            ],
+            'pedidos' => $pedidos
         ];
     }
 
