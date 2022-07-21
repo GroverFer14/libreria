@@ -53,7 +53,7 @@ class ClienteController extends Controller
                     'ventas.tipo_comprobante',
                     'ventas.serie_comprobante',
                     'ventas.num_comprobante',
-                    'ventas.total',
+                    'ventas.total'
                 )
                 ->where('ventas.idcliente', '=', $idUsuario)
                 ->orderBy('ventas.id', 'desc')->paginate(3);
