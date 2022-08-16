@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\correo;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -14,6 +15,7 @@
 Route::group(['middleware' => ['guest']], function () {
     Route::get('/', 'Auth\LoginController@showLoginForm');
     Route::post('/login', 'Auth\LoginController@login')->name('login');
+    Route::post('/prueba', 'Auth\LoginController@prueba')->name('prueba');
 });
 
 Route::group(['middleware' => ['auth']], function () {
@@ -25,7 +27,15 @@ Route::group(['middleware' => ['auth']], function () {
 
     Route::get('/main', function () {
         return view('contenido/contenido');
+        //    return view('contenido/crudcorreo/index');
     })->name('main');
+
+    Route::get('/coreo', 'Auth\LoginController@showCorreo')->name('coreo');
+
+
+    Route::get('/correo', function () {
+        return view('contenido/crudcorreo/index');
+    })->name('correo');
 
     Route::group(['middleware' => ['Almacenero']], function () {
         Route::get('/categoria', 'CategoriaController@index');
@@ -190,6 +200,7 @@ Route::group(['middleware' => ['auth']], function () {
     Route::group(['middleware' => ['Cliente']], function () {
 
         Route::get('/cliente', 'ClienteController@index');
+        Route::get('/cliente/correo', 'ClienteController@crudcorreo')->name('crud');
         Route::post('/cliente/registrar', 'ClienteController@store');
         Route::put('/cliente/actualizar', 'ClienteController@update');
         Route::get('/cliente/selectCliente', 'ClienteController@selectCliente');
@@ -207,6 +218,8 @@ Route::group(['middleware' => ['auth']], function () {
         Route::get('/venta/pdf/{id}', 'VentaController@pdf')->name('venta_pdf');
         Route::get('/venta', 'VentaController@index2');
     });
+    //Route::get('crudcorreo', [correo::class,'index'])->name('crud');
+
 });
 
 //Route::get('/home', 'HomeController@index')->name('home');

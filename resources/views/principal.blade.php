@@ -32,6 +32,13 @@
             <ul class="nav navbar-nav d-md-down-none">
                 <li class="nav-item px-3">
                     <a class="nav-link" href="#">Escritorio</a>
+                    <form class="form-horizontal was-validated" method="GET" action="{{ route('coreo')}}">
+                        <div class="row">
+                            <div class="col-6">
+                                <button type="submit" class="btn btn-primary px-4">Contacto</button>
+                            </div>
+                        </div>
+                    </form>
                 </li>
                 <li class="nav-item px-3">
                     <a class="nav-link" href="#">Configuraciones</a>

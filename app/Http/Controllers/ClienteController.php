@@ -111,4 +111,7 @@ class ClienteController extends Controller
         $persona->email = $request->email;
         $persona->save();
     }
+    public function crudcorreo(){
+        return 'hola mundo';
+    }
 }

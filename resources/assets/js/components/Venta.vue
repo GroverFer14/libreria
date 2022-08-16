@@ -12,6 +12,9 @@
           <button type="button" @click="mostrarDetalle()" class="btn btn-secondary">
             <i class="icon-plus"></i>&nbsp;Nuevo
           </button>
+           <button type="button" @click="mostrarDetalle()" class="btn btn-secondary">
+            <i class="icon-plus"></i>&nbsp;correo
+          </button>
         </div>
         <!-- Listado-->
         <template v-if="listado==1">

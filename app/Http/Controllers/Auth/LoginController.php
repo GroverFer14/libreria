@@ -13,6 +13,11 @@ class LoginController extends Controller
         return view('auth.login');
     }
 
+    public function showCorreo()
+    {
+        return view('contenido.crudcorreo.index');
+    }
+
     public function login(Request $request)
     {
         $this->validateLogin($request);
@@ -24,6 +29,11 @@ class LoginController extends Controller
         return back()
             ->withErrors(['usuario' => trans('auth.failed')])
             ->withInput(request(['usuario']));
+    }
+
+    public function prueba(Request $request)
+    {
+        return redirect()->route('correo');
     }
 
     protected function validateLogin(Request $request)
